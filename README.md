@@ -35,7 +35,7 @@ ansible-galaxy collection install git+https://github.com/aristanetworks/ansible-
 git clone https://github.com/PacketAnglers/atd-avd-evpn-vxlan.git
 ```
 
-- At this point you should see the Lubrizol POC folder under the labfiles directory.
+- At this point you should see the `ATD AVD EVPN VXLAN` directory under the labfiles directory.
 
 ## STEP #3 - Update Passwords and SSH Keys
 

@@ -32,7 +32,7 @@ ansible-galaxy collection install git+https://github.com/aristanetworks/ansible-
 - Clone the POC Repo
 
 ``` bash
-git clone https://github.com/PacketAnglers/atd-avd-l2ls.git
+git clone https://github.com/PacketAnglers/atd-avd-evpn-vxlan.git
 ```
 
 - At this point you should see the Lubrizol POC folder under the labfiles directory.
@@ -43,7 +43,7 @@ The ATD Lab switches are preconfigured with MD5 encrypted passwords.  AVD uses s
 
 From the Programmibility IDE Explorer:
 
-- Navigate to the `labfiles/atd-avd-l2ls/group_vars` folder.
+- Navigate to the `labfiles/atd-avd-evpn-vxlan/group_vars` folder.
 - Double click on the **group_vars/datacenter.yml** file to open an editor tab.
 - Update lines 4, 48, and 49.  **Follow** instructions per line below.
 
@@ -52,7 +52,7 @@ From the Programmibility IDE Explorer:
 - Update `ansible_password` key (line 4) with your unique lab password found on the **Usernames and Passwords** section of your lab topology screen.
 
 ``` yaml
-# group_vars/datacenter.yml
+# group_vars/dc1.yml
 #
 # Credentials for CVP and EOS Switches
 ansible_password: XXXXXXXXXXX
@@ -81,7 +81,7 @@ show run section username | grep arista
 Your file should look similar to below.  Use values your show command output above, as they are unique to your switches.
 
 ``` yaml
-# group_vars/datacenter.yml
+# group_vars/dc1.yml
 #
 # local users to be configured on switch
 local_users:
@@ -92,7 +92,7 @@ local_users:
 
 ## Change directory to the actual repo
 ``` bash
-cd atd-avd-l2ls
+cd atd-avd-evpn-vxlan
 ```
 
 ## Now You're Ready To Rock

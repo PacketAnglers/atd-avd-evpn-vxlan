@@ -1,6 +1,6 @@
 This is copied from l2ls repo.  Make sure to adjust for l3ls dual dc.
 
-# AVD and CVP POC 
+# L3LS with EVPN VXLAN AVD and CVP POC 
 
 # Getting AVD going in the ATD programmability IDE
 From your ATD environment, launch the programmability IDE, enter the password, and launch a new terminal:

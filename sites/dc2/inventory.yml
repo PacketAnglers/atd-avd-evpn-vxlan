@@ -1,0 +1,29 @@
+---
+dc2:
+  children:
+    dc2_fabric:
+      children:
+        dc2_spines:
+          hosts:
+            s2-Spine1:
+            s2-Spine2:
+        dc2_leafs:
+          hosts:
+            s2-Leaf1:
+            s2-Leaf2:
+            s2-Leaf3:
+            s2-Leaf4:
+        dc2_hosts:
+          hosts:
+            s2-Host1:
+            s2-Host2:
+    dc2_fabric_services:
+      children:
+        dc2_spines:
+        dc2_leafs:
+        dc2_hosts:
+    dc2_fabric_ports:
+      children:
+        dc2_spines:
+        dc2_leafs:
+        dc2_hosts:

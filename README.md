@@ -1,5 +1,5 @@
 # PoC - Deploy L3LS with EVPN VXLAN using AVD and CVP
-This PoC will allow you to use Arista's AVD automation framework to deploy a dual datacenter layer 3 leaf spine fabric with EVPN VXLAN.  Additionally, it incorporates CVP into the CI/CD pipeline for configuration change management and auditing.  The PoC has some devices with static configurations, and some that you will be modifying and implementing yourself.
+This PoC will allow you to use Arista's AVD automation framework to deploy a dual datacenter, layer 3 leaf spine fabric with EVPN VXLAN.  Additionally, it incorporates CVP into the CI/CD pipeline for configuration change management and auditing.  The PoC has some devices with static configurations, and some that you will be modifying and implementing yourself.
 
 ## Datacenter Fabric Topology
 Below is a network diagram of the datacenter topology you will be working with.  In this topology, all `s1` devices correspond with `sites/dc1`, and all `s2` devices correspond with `sites/dc2`.

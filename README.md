@@ -1,11 +1,53 @@
-This is copied from l2ls repo.  Make sure to adjust for l3ls dual dc.
+# PoC - Deploy L3LS with EVPN VXLAN using AVD and CVP
+This PoC will allow you to use Arista's AVD automation framework to deploy a dual datacenter layer 3 leaf spine fabric with EVPN VXLAN.  Additionally, it incorporates CVP into the CI/CD pipeline for configuration change management and auditing.  The PoC has some devices with static configurations, and some that you will be modifying and implementing yourself.
 
-# L3LS with EVPN VXLAN AVD and CVP POC 
+## Datacenter Fabric Topology
+Below is a network diagram of the datacenter topology you will be working with.  In this topology, all `s1` devices correspond with `sites/dc1`, and all `s2` devices correspond with `sites/dc2`.
+
+![Topology](images/atd-l3ls-topo.png)
+
+## Directory Structure and Layout
+Since this topology is for two datacenters, the vars and inventory directories and files are broken out per datacenter.  This means there is an inventory file and group_vars directory for each datacenter.  Additionally, since some things are standard across both datacenters, there is a global_vars directory and file.  Finally, the playbooks for building and deploying changes are also split between the datacenters.  The tree structure below outlines all of these items:
+
+### Directory and File Structure
+```bash
+|---global_vars
+    |---global_dc_vars.yml
+|---playbooks
+    |---build_dc1.yml
+    |---build_dc2.yml
+    |---deploy_dc1.yml
+    |---deploy_dc2.yml
+|---sites
+    |---dc1 [Inventory and VARs for DC1 only]
+    |   |---groups_vars
+    |   |   |---dc1_fabric_ports.yml
+    |   |   |---dc1_fabric_services.yml
+    |   |   |---dc1_fabric.yml
+    |   |   |---dc1_hosts.yml
+    |   |   |---dc1_leafs.yml
+    |   |   |---dc1_spines.yml
+    |   |   |---dc1.yml
+    |   |---inventory.yml
+    |---dc2 [Inventory and VARs for DC2 only]
+    |   |---groups_vars
+    |   |   |---dc2_fabric_ports.yml
+    |   |   |---dc2_fabric_services.yml
+    |   |   |---dc2_fabric.yml
+    |   |   |---dc2_hosts.yml
+    |   |   |---dc2_leafs.yml
+    |   |   |---dc2_spines.yml
+    |   |   |---dc2.yml
+    |   |---inventory.yml
+|---ansible.cfg
+|---Makefile
+|---README.md
+```
 
 # Getting AVD going in the ATD programmability IDE
 From your ATD environment, launch the programmability IDE, enter the password, and launch a new terminal:
 
-![Topo](images/programmability_ide.png)
+![IDE](images/programmability_ide.png)
 
 ## STEP #1 - Install deepmerge
 
@@ -39,12 +81,12 @@ git clone https://github.com/PacketAnglers/atd-avd-evpn-vxlan.git
 
 ## STEP #3 - Update Passwords and SSH Keys
 
-The ATD Lab switches are preconfigured with MD5 encrypted passwords.  AVD uses sha512 passwords so we need to convert the current MD5 password to sha512.  **You will need to login to a switch to do this step.**
+The ATD Lab switches are preconfigured with MD5 encrypted passwords.  AVD uses sha512 passwords so we need to convert the current MD5 password to sha512.  **You will need to login to any switch in the topology to complete this step.**  
 
 From the Programmibility IDE Explorer:
 
-- Navigate to the `labfiles/atd-avd-evpn-vxlan/group_vars` folder.
-- Double click on the **group_vars/datacenter.yml** file to open an editor tab.
+- Navigate to the `labfiles/atd-avd-evpn-vxlan/global_vars` directory.
+- Double click on the **global_vars/global_dc_vars.yml** file to open an editor tab.
 - Update lines 4, 48, and 49.  **Follow** instructions per line below.
 
 ### Update Line 4
@@ -52,7 +94,7 @@ From the Programmibility IDE Explorer:
 - Update `ansible_password` key (line 4) with your unique lab password found on the **Usernames and Passwords** section of your lab topology screen.
 
 ``` yaml
-# group_vars/dc1.yml
+# global_vars/global_dc_vars.yml
 #
 # Credentials for CVP and EOS Switches
 ansible_password: XXXXXXXXXXX
@@ -63,7 +105,7 @@ ansible_password: XXXXXXXXXXX
 - First, convert the current `arista` username type 5 password to a sha512 by running the following commands on one of your switches. Substitute XXXXXXX with your Lab's unique password.
 
 ``` bash
-config
+config t
 username arista privilege 15 role network-admin secret XXXXXXXX
 ```
 
@@ -81,7 +123,7 @@ show run section username | grep arista
 Your file should look similar to below.  Use values your show command output above, as they are unique to your switches.
 
 ``` yaml
-# group_vars/dc1.yml
+# global_vars/global_dc_vars.yml
 #
 # local users to be configured on switch
 local_users:

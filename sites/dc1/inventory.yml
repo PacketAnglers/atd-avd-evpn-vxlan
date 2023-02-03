@@ -1,6 +1,9 @@
 ---
 dc1:
   children:
+    CVP:
+      hosts:
+        cvp:
     dc1_fabric:
       children:
         dc1_spines:

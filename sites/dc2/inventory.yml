@@ -1,6 +1,9 @@
 ---
 dc2:
   children:
+    CVP:
+      hosts:
+        cvp:
     dc2_fabric:
       children:
         dc2_spines:

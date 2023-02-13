@@ -1,2 +1,100 @@
 ---
 # DC1 fab services vars
+
+tenants:
+  ATD_DC:
+    mac_vrf_vni_base: 10000
+    evpn_l2_multi_domain: false
+    vrfs:
+      A:
+        vrf_vni: 50001
+        mlag_ibgp_peering_vlan: 4001
+        mlag_ibgp_peering_ipv4_pool: 192.2.2.0/23
+        svis:
+          10:
+            name: ten
+            description: ten
+            tags: ['DC']
+            enabled: true
+            mtu: 9014
+            ip_address_virtual: 10.10.10.1/24
+            evpn_l2_multi_domain: true
+          20:
+            name: twenty
+            description: twenty
+            tags: ['DC']
+            enabled: true
+            mtu: 9014
+            ip_address_virtual: 10.20.20.1/24
+            evpn_l2_multi_domain: true
+        l3_interfaces:
+          ######################################################
+          # SDC-ABL-1 L3 PtP (CORP VRF) to SDC-COREs           #
+          ######################################################
+          - interfaces: [ Ethernet5/1, Ethernet3/51 ]
+            ip_addresses: [ 10.235.254.97/31, 10.235.254.96/31]
+            nodes: [ SDC-ABL-1, SDC-CORE-1]
+            description: P2P_LINK_TO_SDC-CORE-1_Ethernet3/51
+            enabled: true
+            mtu: 9214
+          - interfaces: [ Ethernet6/1, Ethernet3/51 ]
+            ip_addresses: [ 10.235.254.99/31, 10.235.254.98/31]
+            nodes: [ SDC-ABL-1, SDC-CORE-2]
+            description: P2P_LINK_TO_SDC-CORE-2_Ethernet3/51
+            enabled: true
+            mtu: 9214
+          ######################################################
+          # SDC-ABL-2 L3 PtP (CORP VRF) to SDC-COREs           #
+          ######################################################
+          - interfaces: [ Ethernet5/1, Ethernet3/52 ]
+            ip_addresses: [ 10.235.254.101/31, 10.235.254.100/31]
+            nodes: [ SDC-ABL-2, SDC-CORE-1]
+            description: P2P_LINK_TO_SDC-CORE-1_Ethernet3/52
+            enabled: true
+            mtu: 9214
+          - interfaces: [ Ethernet6/1, Ethernet3/52 ]
+            ip_addresses: [ 10.235.254.103/31, 10.235.254.102/31]
+            nodes: [ SDC-ABL-2, SDC-CORE-2]
+            description: P2P_LINK_TO_SDC-CORE-2_Ethernet3/52
+            enabled: true
+            mtu: 9214
+
+        bgp_peers:
+          ######################################################
+          # SDC-ABL-1 eBGP Peerings (CORP VRF) to SDC-COREs    #
+          ######################################################
+          - ip_address: 10.235.254.96
+            remote_as: 65500
+            description: SDC-CORE-1 CORP VRF
+            password: EncryptedPasswordHere
+            send_community: all
+            maximum_routes: 0
+            # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
+            nodes: [ SDC-ABL-1 ]
+          - ip_address: 10.235.254.98
+            remote_as: 65500
+            description: SDC-CORE-2 CORP VRF
+            password: EncryptedPasswordHere
+            send_community: all
+            maximum_routes: 0
+            # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
+            nodes: [ SDC-ABL-1 ]
+          ######################################################
+          # SDC-ABL-2 eBGP Peerings (CORP VRF) to SDC-COREs    #
+          ######################################################
+          - ip_address: 10.235.254.100
+            remote_as: 65500
+            description: SDC-CORE-1 CORP VRF
+            password: EncryptedPasswordHere
+            send_community: all
+            maximum_routes: 0
+            # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
+            nodes: [ SDC-ABL-2 ]
+          - ip_address: 10.235.254.102
+            remote_as: 65500
+            description: SDC-CORE-2 CORP VRF
+            password: EncryptedPasswordHere
+            send_community: all
+            maximum_routes: 0
+            # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
+            nodes: [ SDC-ABL-2 ]

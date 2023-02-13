@@ -88,7 +88,7 @@ l3leaf:
               10.231.1.2/32:
       filter:
         tenants: [ATD_DC]
-        tags: ['A']
+        tags: ['DC']
       bgp_as: 65099
       evpn_gateway:
         evpn_l2:
@@ -141,7 +141,7 @@ l3leaf:
     - group: CoreLeafs
       filter:
         tenants: [ATD_DC]
-        tags: ['A']
+        tags: ['DC']
       bgp_as: 64999
       mlag: false
       uplink_interfaces: [Ethernet2, Ethernet3]
@@ -161,7 +161,7 @@ l3leaf:
     - group: LeafPair1
       filter:
         tenants: [ATD_DC]
-        tags: ['A']
+        tags: ['DC']
       bgp_as: 65001
       nodes:
         - name: s1-leaf1

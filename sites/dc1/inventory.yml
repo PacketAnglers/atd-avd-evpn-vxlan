@@ -18,17 +18,17 @@ dc1:
             s1-brdr2:
             s1-core1:
             s1-core2:
-        dc1_hosts:
-          hosts:
-            s1-host1:
-            s1-host2:
+        # dc1_hosts:
+        #   hosts:
+        #     s1-host1:
+        #     s1-host2:
     dc1_fabric_services:
       children:
         dc1_spines:
         dc1_leafs:
-        dc1_hosts:
+        # dc1_hosts:
     dc1_fabric_ports:
       children:
         dc1_spines:
         dc1_leafs:
-        dc1_hosts:
+        # dc1_hosts:

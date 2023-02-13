@@ -53,10 +53,10 @@ l3leaf:
     platform: ceos
     loopback_ipv4_pool: 10.1.0.0/24
     vtep_loopback_ipv4_pool: 10.1.1.0/24
-    uplink_interfaces: [Ethernet97/1, Ethernet98/1]
-    uplink_switches: [ISOC-ASPINE-1, ISOC-ASPINE-2]
+    uplink_interfaces: [Ethernet2, Ethernet3]
+    uplink_switches: [s1-Spine1, s1-Spine2]
     uplink_ipv4_pool: 10.255.0.0/22
-    mlag_interfaces: [Ethernet103/1, Ethernet104/1]
+    mlag_interfaces: [Ethernet1, Ethernet6]
     mlag_peer_ipv4_pool: 192.0.0.0/24
     mlag_peer_l3_ipv4_pool: 192.1.1.0/24
     mlag_port_channel_id: 1000

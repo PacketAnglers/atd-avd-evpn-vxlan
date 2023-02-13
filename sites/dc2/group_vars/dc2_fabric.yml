@@ -38,10 +38,10 @@ spine:
       - 'graceful-restart restart-time 300'
       - 'graceful-restart'
   nodes:
-    - name: s1-Spine1
+    - name: s1-spine1
       id: 110
       mgmt_ip: 192.168.0.10/24
-    - name: s1-Spine2
+    - name: s1-spine2
       id: 112
       mgmt_ip: 192.168.0.11/24
 
@@ -89,19 +89,19 @@ l3leaf:
       filter:
         tenants: [ATD_DC]
         tags: ['A']
-      bgp_as: 4200010199
+      bgp_as: 65199
       evpn_gateway:
         evpn_l2:
           enabled: true
         remote_peers:
-        - hostname: SDC-ABL-1
+        - hostname: s1-brdr1
           ip_address: 10.231.0.102
-          bgp_as: 4200010299
-        - hostname: SDC-ABL-2
+          bgp_as: 65099
+        - hostname: s1-brdr2
           ip_address: 10.231.0.104
-          bgp_as: 4200010299
+          bgp_as: 65099
       nodes:
-        - name: ISOC-ABL-1
+        - name: s2-brdr1
           id: 2
           mgmt_ip: 10.171.7.2/23
           uplink_switch_interfaces: [Ethernet3/36/1, Ethernet3/36/1]
@@ -118,7 +118,7 @@ l3leaf:
                   remote_as: 65500
                   description: ISOC-CORE-2 VRF Default
                   peer_group: IPV4-UNDERLAY-PEERS
-        - name: ISOC-ABL-2
+        - name: s2-brdr2
           id: 4
           mgmt_ip: 10.171.7.4/23
           uplink_switch_interfaces: [Ethernet4/36/1, Ethernet4/36/1]
@@ -144,11 +144,11 @@ l3leaf:
         tags: ['A']
       bgp_as: 65101
       nodes:
-        - name: s2-Leaf1
+        - name: s2-leaf1
           id: 114
           mgmt_ip: 192.168.0.12/24
           uplink_switch_interfaces: [Ethernet2, Ethernet2]
-        - name: s2-Leaf2
+        - name: s2-leaf2
           id: 116
           mgmt_ip: 192.168.0.13/24
           uplink_switch_interfaces: [Ethernet3, Ethernet3]

@@ -104,9 +104,9 @@ l3leaf:
         - name: s2-brdr1
           id: 2
           mgmt_ip: 10.171.7.2/23
-          uplink_switch_interfaces: [Ethernet3/36/1, Ethernet3/36/1]
-          uplink_interfaces: [Ethernet29/1, Ethernet30/1]
-          mlag_interfaces: [Ethernet31/1, Ethernet32/1]
+          uplink_switch_interfaces: [Ethernet7, Ethernet7]
+          uplink_interfaces: [Ethernet2, Ethernet3]
+          mlag_interfaces: [Ethernet1, Ethernet6]
           structured_config:
             router_bgp:
               neighbors:
@@ -121,9 +121,9 @@ l3leaf:
         - name: s2-brdr2
           id: 4
           mgmt_ip: 10.171.7.4/23
-          uplink_switch_interfaces: [Ethernet4/36/1, Ethernet4/36/1]
-          uplink_interfaces: [Ethernet29/1, Ethernet30/1]
-          mlag_interfaces: [Ethernet31/1, Ethernet32/1]
+          uplink_switch_interfaces: [Ethernet8, Ethernet8]
+          uplink_interfaces: [Ethernet2, Ethernet3]
+          mlag_interfaces: [Ethernet1, Ethernet6]
           structured_config:
             router_bgp:
               neighbors:

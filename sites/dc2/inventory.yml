@@ -14,6 +14,10 @@ dc2:
           hosts:
             s2-leaf1:
             s2-leaf2:
+            s2-brdr1:
+            s2-brdr2:
+            s2-core1:
+            s2-core2:
         dc2_hosts:
           hosts:
             s2-host1:

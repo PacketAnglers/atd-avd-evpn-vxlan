@@ -14,6 +14,10 @@ dc1:
           hosts:
             s1-leaf1:
             s1-leaf2:
+            s1-brdr1:
+            s1-brdr2:
+            s1-core1:
+            s1-core2:
         dc1_hosts:
           hosts:
             s1-host1:

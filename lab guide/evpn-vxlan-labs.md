@@ -83,7 +83,7 @@ s2-Leaf4
 
 2) To enable AVD to generate all the required configuration changes, you will only need to modify the `*_fabric.yml` files for each datacenter.  Follow the  YAML file structure for the existing leaf pairs, 1 and 2, and enter the required changes using the parameters below:
 
-3) For dc1, you will modify:  `sites/dc1/group_vars/dc1_fabric.yml`
+    1) For dc1, you will modify:  `sites/dc1/group_vars/dc1_fabric.yml`
 
 Use the following parameters for Leafs 3 and 4, which are leaf pair 2.
 
@@ -102,7 +102,7 @@ s1-Leaf4
     uplink_switch_interfaces:
 ```
 
-4) For dc2, you will modify:  `sites/dc2/group_vars/dc2_fabric.yml`
+    2) For dc2, you will modify:  `sites/dc2/group_vars/dc2_fabric.yml`
 
 Use the following parameters for Leafs 3 and 4, which are leaf pair 2.
 
@@ -110,13 +110,25 @@ Use the following parameters for Leafs 3 and 4, which are leaf pair 2.
 group: LeafPair2
 bgp_as: 
 
-s1-Leaf3
+s2-Leaf3
     id: 15
     mgmt_ip: 192.168.0.24
     uplink_switch_interfaces:
 
-s1-Leaf4
+s2-Leaf4
     id: 16
     mgmt_ip: 192.168.0.25
     uplink_switch_interfaces:
 ```
+
+After modifying and saving the vars files, complete the following steps:
+
+1) Issue the `make build-dc1` and `make build-dc2` to generate the new structured and device configurations.
+
+2) Review the configurations in their respective directories and verify the changes are correct.  
+
+3) Review the changes to the documentation that is auto-created.
+
+4) Issue the `make deploy-dc1` and `make deploy-dc2`, review the created change controls in CVP, and approve.
+
+5) Login to leaf switches 3 and 4 and verify the new configurations are present.

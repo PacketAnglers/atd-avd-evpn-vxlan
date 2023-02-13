@@ -29,39 +29,39 @@ tenants:
             evpn_l2_multi_domain: true
         l3_interfaces:
           ######################################################
-          # SDC-ABL-1 L3 PtP (CORP VRF) to SDC-COREs           #
+          # s2-brdr1 L3 PtP (CORP VRF) to s2-cores             #
           ######################################################
-          - interfaces: [ Ethernet5/1, Ethernet3/51 ]
+          - interfaces: [ Ethernet4, Ethernet2 ]
             ip_addresses: [ 10.235.254.97/31, 10.235.254.96/31]
-            nodes: [ SDC-ABL-1, SDC-CORE-1]
-            description: P2P_LINK_TO_SDC-CORE-1_Ethernet3/51
+            nodes: [ s2-brdr1, s2-core1]
+            description: blah1
             enabled: true
             mtu: 9214
-          - interfaces: [ Ethernet6/1, Ethernet3/51 ]
+          - interfaces: [ Ethernet5, Ethernet2 ]
             ip_addresses: [ 10.235.254.99/31, 10.235.254.98/31]
-            nodes: [ SDC-ABL-1, SDC-CORE-2]
-            description: P2P_LINK_TO_SDC-CORE-2_Ethernet3/51
+            nodes: [ s2-brdr1, s2-core2]
+            description: blah2
             enabled: true
             mtu: 9214
           ######################################################
-          # SDC-ABL-2 L3 PtP (CORP VRF) to SDC-COREs           #
+          # s2-brdr2 L3 PtP (CORP VRF) to s2-cores             #
           ######################################################
-          - interfaces: [ Ethernet5/1, Ethernet3/52 ]
+          - interfaces: [ Ethernet4, Ethernet3 ]
             ip_addresses: [ 10.235.254.101/31, 10.235.254.100/31]
-            nodes: [ SDC-ABL-2, SDC-CORE-1]
-            description: P2P_LINK_TO_SDC-CORE-1_Ethernet3/52
+            nodes: [ s2-brdr2, s2-core1]
+            description: blah3
             enabled: true
             mtu: 9214
-          - interfaces: [ Ethernet6/1, Ethernet3/52 ]
+          - interfaces: [ Ethernet5, Ethernet3 ]
             ip_addresses: [ 10.235.254.103/31, 10.235.254.102/31]
-            nodes: [ SDC-ABL-2, SDC-CORE-2]
-            description: P2P_LINK_TO_SDC-CORE-2_Ethernet3/52
+            nodes: [ s2-brdr2, s2-core2]
+            description: blah4
             enabled: true
             mtu: 9214
 
         bgp_peers:
           ######################################################
-          # SDC-ABL-1 eBGP Peerings (CORP VRF) to SDC-COREs    #
+          # s2-brdr1 eBGP Peerings (CORP VRF) to s2-cores      #
           ######################################################
           - ip_address: 10.235.254.96
             remote_as: 65500
@@ -80,7 +80,7 @@ tenants:
             # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
             nodes: [ SDC-ABL-1 ]
           ######################################################
-          # SDC-ABL-2 eBGP Peerings (CORP VRF) to SDC-COREs    #
+          # s2-brdr2 eBGP Peerings (CORP VRF) to s2-cores      #
           ######################################################
           - ip_address: 10.235.254.100
             remote_as: 65500

@@ -54,7 +54,7 @@ l3leaf:
     loopback_ipv4_pool: 10.1.0.0/24
     vtep_loopback_ipv4_pool: 10.1.1.0/24
     uplink_interfaces: [Ethernet2, Ethernet3]
-    uplink_switches: [s2-Spine1, s2-Spine2]
+    uplink_switches: [s2-spine1, s2-spine2]
     uplink_ipv4_pool: 10.255.0.0/22
     mlag_interfaces: [Ethernet1, Ethernet6]
     mlag_peer_ipv4_pool: 192.0.0.0/24

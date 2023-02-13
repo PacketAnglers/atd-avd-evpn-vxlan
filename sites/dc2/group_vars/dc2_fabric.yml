@@ -51,8 +51,8 @@ spine:
 l3leaf:
   defaults:
     platform: ceos
-    loopback_ipv4_pool: 10.231.0.0/24
-    vtep_loopback_ipv4_pool: 10.231.1.0/24
+    loopback_ipv4_pool: 10.1.0.0/24
+    vtep_loopback_ipv4_pool: 10.1.1.0/24
     uplink_interfaces: [Ethernet97/1, Ethernet98/1]
     uplink_switches: [ISOC-ASPINE-1, ISOC-ASPINE-2]
     uplink_ipv4_pool: 10.231.4.0/22
@@ -75,13 +75,11 @@ l3leaf:
           bpduguard_default: true
   node_groups:
     ####################################################
-    # ISOC CORP Border Leafs                           #
+    # DC2 Border Leafs                                 #
     ####################################################
-    - group: BL_CORP
-      platform: 7280R3
+    - group: BrdrLeafs
+      platform: ceos
       structured_config:
-        tcam_profile:
-          system: vxlan-routing
         router_bgp:
           address_family_ipv4:
             networks:
@@ -89,8 +87,8 @@ l3leaf:
               10.231.0.4/32:
               10.231.1.2/32:
       filter:
-        tenants: [FE_DC]
-        tags: ['CORP']
+        tenants: [ATD_DC]
+        tags: ['A']
       bgp_as: 4200010199
       evpn_gateway:
         evpn_l2:
@@ -142,8 +140,8 @@ l3leaf:
     ####################################################
     - group: LeafPair1
       filter:
-        tenants: [FE_DC]
-        tags: ['CORP']
+        tenants: [ATD_DC]
+        tags: ['A']
       bgp_as: 65101
       nodes:
         - name: s2-Leaf1

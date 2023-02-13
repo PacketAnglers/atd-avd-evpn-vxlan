@@ -136,6 +136,22 @@ l3leaf:
           #         description: ISOC-CORE-2 VRF Default
           #         peer_group: IPV4-UNDERLAY-PEERS
     ####################################################
+    # DC2 Core Leafs                                   #
+    ####################################################      
+    - group: CoreLeafs
+      filter:
+        tenants: [ATD_DC]
+        tags: ['A']
+      bgp_as: 64999
+      mlag: false
+      nodes:
+        - name: s2-core1
+          id: 150
+          mgmt_ip: 192.168.0.202/24
+        - name: s2-core2
+          id: 152
+          mgmt_ip: 192.168.0.203/24
+    ####################################################
     # DC2 Leaf Pair 1                                  #
     ####################################################
     - group: LeafPair1

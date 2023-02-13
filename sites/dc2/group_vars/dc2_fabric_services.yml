@@ -65,36 +65,36 @@ tenants:
           ######################################################
           - ip_address: 10.235.254.96
             remote_as: 65500
-            description: SDC-CORE-1 CORP VRF
+            description: s2-core1 A VRF
             password: EncryptedPasswordHere
             send_community: all
             maximum_routes: 0
             # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
-            nodes: [ SDC-ABL-1 ]
+            nodes: [ s2-brdr1 ]
           - ip_address: 10.235.254.98
             remote_as: 65500
-            description: SDC-CORE-2 CORP VRF
+            description: s2-core2 CORP VRF
             password: EncryptedPasswordHere
             send_community: all
             maximum_routes: 0
             # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
-            nodes: [ SDC-ABL-1 ]
+            nodes: [ s2-brdr1 ]
           ######################################################
           # s2-brdr2 eBGP Peerings (CORP VRF) to s2-cores      #
           ######################################################
           - ip_address: 10.235.254.100
             remote_as: 65500
-            description: SDC-CORE-1 CORP VRF
+            description: s2-core1 CORP VRF
             password: EncryptedPasswordHere
             send_community: all
             maximum_routes: 0
             # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
-            nodes: [ SDC-ABL-2 ]
+            nodes: [ s2-brdr2 ]
           - ip_address: 10.235.254.102
             remote_as: 65500
-            description: SDC-CORE-2 CORP VRF
+            description: s2-core2 CORP VRF
             password: EncryptedPasswordHere
             send_community: all
             maximum_routes: 0
             # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
-            nodes: [ SDC-ABL-2 ]
+            nodes: [ s2-brdr2 ]

@@ -59,4 +59,44 @@ After modifying and saving the vars files, complete the following steps:
 
 ## Lab 2 - Add Leaf Pairs 3 and 4
 
-This lab 
+This lab will show you the simplicity in adding additional leaf pairs to your existing Layer 3 leaf/spines topology.  In a non-automated topology, when deploying new leafs, you would need to duplicate or create the base configs for the new leafs, and then modify the configurations of the existing devices to add them into the EVPN VXLAN overlay.  For this lab, you will be adding leafs 3 and 4 in each datacenter into the network topology by following the below steps.
+
+1) The first step is to add the new leafs into their respective inventory files:
+
+For dc1, you will modify:  `sites/dc1/inventory.yml`
+
+Add the following switches into the correct location in the file:
+
+```yaml
+s1-Leaf3
+s1-Leaf4
+```
+
+For dc2, you will modify:  `sites/dc2/inventory.yml`
+
+Add the following switches into the correct location in the file:
+
+```yaml
+s2-Leaf3
+s2-Leaf4
+```
+
+2) To enable AVD to generate all the required configuration changes, you will only need to modify the `*_fabric.yml` files for each datacenter.  Follow the  YAML file structure for the existing leaf pairs, 1 and 2, and enter the required changes using the parameters below:
+
+For dc1, you will modify:  `sites/dc1/group_vars/dc1_fabric.yml`
+
+Use the following parameters for Leafs 3 and 4, which are leaf pair 2.
+
+```yaml
+group: LeafPair2
+bgp_as: 
+
+s1-Leaf3
+    id: 5
+    mgmt_ip: 192.168.5.
+    uplink_switch_interfaces:
+
+s1-Leaf4
+    id: 6
+    mgmt_ip: 192.168.
+    uplink_switch_interfaces:

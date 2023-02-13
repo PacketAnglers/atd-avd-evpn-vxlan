@@ -14,8 +14,6 @@ dc2:
           hosts:
             s2-Leaf1:
             s2-Leaf2:
-            s2-Leaf3:
-            s2-Leaf4:
         dc2_hosts:
           hosts:
             s2-Host1:

@@ -144,13 +144,17 @@ l3leaf:
         tags: ['A']
       bgp_as: 64999
       mlag: false
+      uplink_interfaces: [Ethernet2, Ethernet3]
+      uplink_switches: [s2-brdr1, s2-brdr2]
       nodes:
         - name: s2-core1
           id: 150
           mgmt_ip: 192.168.0.202/24
+          uplink_switch_interfaces: [Ethernet4, Ethernet5]
         - name: s2-core2
           id: 152
           mgmt_ip: 192.168.0.203/24
+          uplink_switch_interfaces: [Ethernet4, Ethernet5]
     ####################################################
     # DC2 Leaf Pair 1                                  #
     ####################################################

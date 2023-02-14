@@ -1,4 +1,4 @@
-# PoC - Deploy L3LS with EVPN VXLAN using AVD and CVP
+# Deploy L3LS with EVPN VXLAN using AVD and CVP
 This PoC will allow you to use Arista's AVD automation framework to deploy a dual datacenter, layer 3 leaf spine fabric with EVPN VXLAN.  Additionally, it incorporates CVP into the CI/CD pipeline for configuration change management and auditing.  The PoC has some devices with static configurations, and some that you will be modifying and implementing yourself.
 
 ## Datacenter Fabric Topology
@@ -16,10 +16,15 @@ Since this topology is for two datacenters, the vars and inventory directories a
 |---playbooks
     |---build_dc1.yml
     |---build_dc2.yml
+    |---cfg_dc1_dci.yml
+    |---cfg_dc2_dci.yml
     |---deploy_dc1.yml
     |---deploy_dc2.yml
 |---sites
     |---dc1 [Inventory and VARs for DC1 only]
+    |   |---dci_configs [Non AVD Configs for Topology]
+    |   |   |---s1-core1.cfg
+    |   |   |---s1-core2.cfg
     |   |---groups_vars
     |   |   |---dc1_fabric_ports.yml
     |   |   |---dc1_fabric_services.yml
@@ -30,6 +35,9 @@ Since this topology is for two datacenters, the vars and inventory directories a
     |   |   |---dc1.yml
     |   |---inventory.yml
     |---dc2 [Inventory and VARs for DC2 only]
+    |   |---dci_configs [Non AVD Configs for Topology]
+    |   |   |---s2-core1.cfg
+    |   |   |---s2-core2.cfg
     |   |---groups_vars
     |   |   |---dc2_fabric_ports.yml
     |   |   |---dc2_fabric_services.yml
@@ -85,22 +93,23 @@ The ATD Lab switches are preconfigured with MD5 encrypted passwords.  AVD uses s
 
 From the Programmibility IDE Explorer:
 
-- Navigate to the `labfiles/atd-avd-evpn-vxlan/global_vars` directory.
-- Double click on the **global_vars/global_dc_vars.yml** file to open an editor tab.
-- Update lines 4, 48, and 49.  **Follow** instructions per line below.
+- Navigate to the `labfiles/atd-avd-evpn-vxlan/sites/dc1` directory.
+- Double click on the **dc1.yml** file to open an editor tab.
+- Update line 6.  **Follow** instructions per line below.
 
-### Update Line 4
+### Update Line 6
 
 - Update `ansible_password` key (line 4) with your unique lab password found on the **Usernames and Passwords** section of your lab topology screen.
 
 ``` yaml
-# global_vars/global_dc_vars.yml
+# sites/dc1/group_vars/dc1.yml
 #
-# Credentials for CVP and EOS Switches
-ansible_password: XXXXXXXXXXX
+# Update password with lab credentials
+ansible_password: <------------> 
 ```
+- Repeat the above steps for the **dc2.yml** file, in the `sites/dc2` directory.
 
-### Update Lines 48 & 49
+### Update Lines 36 & 37
 
 - First, convert the current `arista` username type 5 password to a sha512 by running the following commands on one of your switches. Substitute XXXXXXX with your Lab's unique password.
 
@@ -117,19 +126,18 @@ show run section username | grep arista
 
 - Update the sha512_password and ssh_key with the above values. _Remember to keep the double quotes and DO NOT REMOVE `ssh-rsa` from the ssh_key._
 
-- line 49 - `sha512_password:`
-- line 50 - `ssh_key:`
+- line 36 - `sha512_password:`
+- line 37 - `ssh_key:`
 
 Your file should look similar to below.  Use values your show command output above, as they are unique to your switches.
 
 ``` yaml
 # global_vars/global_dc_vars.yml
 #
-# local users to be configured on switch
-local_users:
-  arista:
-    sha512_password: "XXXXXXXXXXXXXX"
-    ssh_key: "ssh-rsa XXXXXXXXXXXXXXXXXXX"
+#
+# Update sha512_password and ssh_key (leave ssh-rsa in place) from one of your Lab switches
+    sha512_password: "<----------->"
+    ssh_key: "ssh-rsa <----------->"
 ```
 
 ## Change directory to the actual repo

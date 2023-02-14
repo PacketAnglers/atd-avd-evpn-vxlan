@@ -14,18 +14,26 @@ build_dc1: ## Build AVD Configs for DC1
 build_dc2: ## Build AVD Configs for DC2
 	ansible-playbook playbooks/build_dc2.yml -i sites/dc2/inventory.yml
 
-.PHONY: deploy_dc1
-deploy_dc1: ## Deploy DC1 AVD Configs Through CVP
-	ansible-playbook playbooks/deploy_dc1.yml -i sites/dc1/inventory.yml
+.PHONY: deploy_dc1_cvp
+deploy_dc1_cvp: ## Deploy DC1 AVD Configs Through CVP
+	ansible-playbook playbooks/deploy_dc1_cvp.yml -i sites/dc1/inventory.yml
 
-.PHONY: deploy_dc2
+.PHONY: deploy_dc2_cvp
 deploy_dc2: ## Deploy DC2 AVD Configs Through CVP
-	ansible-playbook playbooks/deploy_dc2.yml -i sites/dc2/inventory.yml
+	ansible-playbook playbooks/deploy_dc2_cvp.yml -i sites/dc2/inventory.yml
 
-.PHONY: cfg_dc1_dci
-cfg_dc1_dci: ## Deploy DC1 DCI configs to non-avd devices
-	ansible-playbook playbooks/cfg_dc1_dci.yml -i sites/dc1/inventory.yml
+.PHONY: deploy_dc1_dci
+deploy_dc1_dci: ## Deploy DC1 DCI configs to non-avd devices
+	ansible-playbook playbooks/deploy_dc1_dci_eapi.yml -i sites/dc1/inventory.yml
 
-.PHONY: cfg_dc2_dci
-cfg_dc2_dci: ## Deploy DC1 DCI configs to non-avd devices
-	ansible-playbook playbooks/cfg_dc2_dci.yml -i sites/dc2/inventory.yml
+.PHONY: deploy_dc2_dci
+deploy_dc2_dci: ## Deploy DC1 DCI configs to non-avd devices
+	ansible-playbook playbooks/deploy_dc2_dci_eapi.yml -i sites/dc2/inventory.yml
+
+.PHONY: deploy_dc1_eapi
+deploy_dc1_eapi: ## Deploy DC1 Spine/Leaf AVD generated configs via eAPI
+	ansible-playbook playbooks/deploy_dc1_eapi.yml -i sites/dc1/inventory.yml
+
+.PHONY: deploy_dc2_eapi
+deploy_dc2_eapi: ## Deploy DC1 Spine/Leaf AVD generated configs via eAPI
+	ansible-playbook playbooks/deploy_dc2_eapi.yml -i sites/dc1/inventory.yml

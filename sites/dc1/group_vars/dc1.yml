@@ -1,10 +1,10 @@
 ---
-# DC1 vars
+# DC1 variables
 
 # Credentials for CVP and EOS Switches
 ansible_user: arista
 # Update password with lab credentials
-ansible_password: <------------> 
+ansible_password: #########
 ansible_network_os: arista.eos.eos
 # Configure privilege escalation
 ansible_become: true

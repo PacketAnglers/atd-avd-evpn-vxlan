@@ -1,5 +1,5 @@
 # Deploy L3LS with EVPN VXLAN using AVD and CVP
-This PoC will allow you to use Arista's AVD automation framework to deploy a dual datacenter, layer 3 leaf spine fabric with EVPN VXLAN.  Additionally, it incorporates CVP into the CI/CD pipeline for configuration change management and auditing.  The PoC has some devices with static configurations, and some that you will be modifying and implementing yourself.
+This PoC will allow you to use Arista's AVD automation framework to deploy a dual datacenter, layer 3 leaf spine fabric with EVPN VXLAN.  Additionally, it incorporates CVP into the CI/CD pipeline for configuration change management and auditing.  The PoC has some devices with static configurations that need to be deployed with the via ansible playbooks utilizing the **eos_config** role, and some that you will be modifying and implementing yourself using AVD.
 
 ## Datacenter Fabric Topology
 Below is a network diagram of the datacenter topology you will be working with.  In this topology, all `s1` devices correspond with `sites/dc1`, and all `s2` devices correspond with `sites/dc2`.
@@ -105,44 +105,13 @@ From the Programmibility IDE Explorer:
 # sites/dc1/group_vars/dc1.yml
 #
 # Update password with lab credentials
-ansible_password: <------------> 
+ansible_password: ######### 
 ```
 - Repeat the above steps for the **dc2.yml** file, in the `sites/dc2` directory.
-
-### Update Lines 36 & 37
-
-- First, convert the current `arista` username type 5 password to a sha512 by running the following commands on one of your switches. Substitute XXXXXXX with your Lab's unique password.
-
-``` bash
-config t
-username arista privilege 15 role network-admin secret XXXXXXXX
-```
-
-- Retrieve password and ssh key for user `arista`.
-
-``` bash
-show run section username | grep arista
-```
-
-- Update the sha512_password and ssh_key with the above values. _Remember to keep the double quotes and DO NOT REMOVE `ssh-rsa` from the ssh_key._
-
-- line 36 - `sha512_password:`
-- line 37 - `ssh_key:`
-
-Your file should look similar to below.  Use values your show command output above, as they are unique to your switches.
-
-``` yaml
-# global_vars/global_dc_vars.yml
-#
-#
-# Update sha512_password and ssh_key (leave ssh-rsa in place) from one of your Lab switches
-    sha512_password: "<----------->"
-    ssh_key: "ssh-rsa <----------->"
-```
 
 ## Change directory to the actual repo
 ``` bash
 cd atd-avd-evpn-vxlan
 ```
 
-## Now You're Ready To Rock
+## Building and Deploying Configurations

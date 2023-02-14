@@ -16,8 +16,6 @@ dc1:
             s1-leaf2:
             s1-brdr1:
             s1-brdr2:
-            s1-core1:
-            s1-core2:
         # dc1_hosts:
         #   hosts:
         #     s1-host1:
@@ -32,3 +30,7 @@ dc1:
         dc1_spines:
         dc1_leafs:
         # dc1_hosts:
+    dc1_dci:
+      hosts:
+        s1-core1:
+        s1-core2:

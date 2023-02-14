@@ -27,74 +27,74 @@ tenants:
             mtu: 9014
             ip_address_virtual: 10.20.20.1/24
             evpn_l2_multi_domain: true
-        l3_interfaces:
-          ######################################################
-          # s1-brdr1 L3 PtP (A VRF) to s1-cores                #
-          ######################################################
-          - interfaces: [ Ethernet4, Ethernet2 ]
-            ip_addresses: [ 10.235.254.97/31, 10.235.254.96/31]
-            nodes: [ s1-brdr1, s1-core1]
-            description: blah1
-            enabled: true
-            mtu: 9214
-          - interfaces: [ Ethernet5, Ethernet2 ]
-            ip_addresses: [ 10.235.254.99/31, 10.235.254.98/31]
-            nodes: [ s1-brdr1, s1-core2]
-            description: blah2
-            enabled: true
-            mtu: 9214
-          ######################################################
-          # s1-brdr2 L3 PtP (A VRF) to s1-cores                #
-          ######################################################
-          - interfaces: [  Ethernet4, Ethernet3 ]
-            ip_addresses: [ 10.235.254.101/31, 10.235.254.100/31]
-            nodes: [ s1-brdr2, s1-core1]
-            description: blah3
-            enabled: true
-            mtu: 9214
-          - interfaces: [ Ethernet5, Ethernet3 ]
-            ip_addresses: [ 10.235.254.103/31, 10.235.254.102/31]
-            nodes: [ s1-brdr2, s1-core2]
-            description: blah4
-            enabled: true
-            mtu: 9214
+        # l3_interfaces:
+        #   ######################################################
+        #   # s1-brdr1 L3 PtP (A VRF) to s1-cores                #
+        #   ######################################################
+        #   - interfaces: [ Ethernet4, Ethernet2 ]
+        #     ip_addresses: [ 10.235.254.97/31, 10.235.254.96/31]
+        #     nodes: [ s1-brdr1, s1-core1]
+        #     description: blah1
+        #     enabled: true
+        #     mtu: 9214
+        #   - interfaces: [ Ethernet5, Ethernet2 ]
+        #     ip_addresses: [ 10.235.254.99/31, 10.235.254.98/31]
+        #     nodes: [ s1-brdr1, s1-core2]
+        #     description: blah2
+        #     enabled: true
+        #     mtu: 9214
+        #   ######################################################
+        #   # s1-brdr2 L3 PtP (A VRF) to s1-cores                #
+        #   ######################################################
+        #   - interfaces: [  Ethernet4, Ethernet3 ]
+        #     ip_addresses: [ 10.235.254.101/31, 10.235.254.100/31]
+        #     nodes: [ s1-brdr2, s1-core1]
+        #     description: blah3
+        #     enabled: true
+        #     mtu: 9214
+        #   - interfaces: [ Ethernet5, Ethernet3 ]
+        #     ip_addresses: [ 10.235.254.103/31, 10.235.254.102/31]
+        #     nodes: [ s1-brdr2, s1-core2]
+        #     description: blah4
+        #     enabled: true
+        #     mtu: 9214
 
-        bgp_peers:
-          ######################################################
-          # s1-brdr1 eBGP Peerings (CORP VRF) to s1-cores      #
-          ######################################################
-          - ip_address: 10.235.254.96
-            remote_as: 65500
-            description: s1-core1 A VRF
-            password: EncryptedPasswordHere
-            send_community: all
-            maximum_routes: 0
-            # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
-            nodes: [ s1-brdr1 ]
-          - ip_address: 10.235.254.98
-            remote_as: 65500
-            description: s1-core2 A VRF
-            password: EncryptedPasswordHere
-            send_community: all
-            maximum_routes: 0
-            # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
-            nodes: [ s1-brdr1 ]
-          ######################################################
-          # s1-brdr2 eBGP Peerings (CORP VRF) to s1-cores      #
-          ######################################################
-          - ip_address: 10.235.254.100
-            remote_as: 65500
-            description: s1-core1 A VRF
-            password: EncryptedPasswordHere
-            send_community: all
-            maximum_routes: 0
-            # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
-            nodes: [ s1-core2 ]
-          - ip_address: 10.235.254.102
-            remote_as: 65500
-            description: s1-core2 A VRF
-            password: EncryptedPasswordHere
-            send_community: all
-            maximum_routes: 0
-            # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
-            nodes: [ s1-core2 ]
+        # bgp_peers:
+        #   ######################################################
+        #   # s1-brdr1 eBGP Peerings (CORP VRF) to s1-cores      #
+        #   ######################################################
+        #   - ip_address: 10.235.254.96
+        #     remote_as: 65500
+        #     description: s1-core1 A VRF
+        #     password: EncryptedPasswordHere
+        #     send_community: all
+        #     maximum_routes: 0
+        #     # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
+        #     nodes: [ s1-brdr1 ]
+        #   - ip_address: 10.235.254.98
+        #     remote_as: 65500
+        #     description: s1-core2 A VRF
+        #     password: EncryptedPasswordHere
+        #     send_community: all
+        #     maximum_routes: 0
+        #     # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
+        #     nodes: [ s1-brdr1 ]
+        #   ######################################################
+        #   # s1-brdr2 eBGP Peerings (CORP VRF) to s1-cores      #
+        #   ######################################################
+        #   - ip_address: 10.235.254.100
+        #     remote_as: 65500
+        #     description: s1-core1 A VRF
+        #     password: EncryptedPasswordHere
+        #     send_community: all
+        #     maximum_routes: 0
+        #     # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
+        #     nodes: [ s1-core2 ]
+        #   - ip_address: 10.235.254.102
+        #     remote_as: 65500
+        #     description: s1-core2 A VRF
+        #     password: EncryptedPasswordHere
+        #     send_community: all
+        #     maximum_routes: 0
+        #     # Nodes is required to restrict configuration of BGP neighbors to certain nodes in the network.
+        #     nodes: [ s1-core2 ]

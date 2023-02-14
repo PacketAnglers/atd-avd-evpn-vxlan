@@ -1,0 +1,10 @@
+---
+- name: Modify DC2 s1-core1/core2 Configurations
+  hosts: dc2_dci
+  tasks:
+
+    - name: Modify configuration 
+      import_role:
+        name: arista.eos.eos_config
+          src: "{{lookup('env','PWD')}}/dc2/dci_configs/{{inventory_hostname}}.cfg"
+

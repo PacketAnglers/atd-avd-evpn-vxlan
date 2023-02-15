@@ -89,17 +89,17 @@ Use the following parameters for Leafs 3 and 4, which are leaf pair 2.
 
 ```yaml
 group: LeafPair2
-bgp_as: 
+bgp_as: 65002
 
 s1-Leaf3
-    id: 5
+    id: 18
     mgmt_ip: 192.168.0.14
-    uplink_switch_interfaces:
+    uplink_switch_interfaces: Ethernet4, Ethernet4
 
 s1-Leaf4
-    id: 6
+    id: 20
     mgmt_ip: 192.168.0.15
-    uplink_switch_interfaces:
+    uplink_switch_interfaces: Ethernet5, Ethernet5
 ```
 
     2) For dc2, you will modify:  `sites/dc2/group_vars/dc2_fabric.yml`
@@ -108,17 +108,17 @@ Use the following parameters for Leafs 3 and 4, which are leaf pair 2.
 
 ```yaml
 group: LeafPair2
-bgp_as: 
+bgp_as: 65102
 
 s2-Leaf3
-    id: 15
+    id: 118
     mgmt_ip: 192.168.0.24
-    uplink_switch_interfaces:
+    uplink_switch_interfaces: Ethernet4, Ethernet4
 
 s2-Leaf4
-    id: 16
+    id: 120
     mgmt_ip: 192.168.0.25
-    uplink_switch_interfaces:
+    uplink_switch_interfaces: Ethernet5, Ethernet5
 ```
 
 After modifying and saving the vars files, complete the following steps:

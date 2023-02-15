@@ -109,9 +109,23 @@ ansible_password: #########
 ```
 - Repeat the above steps for the **dc2.yml** file, in the `sites/dc2` directory.
 
+<br>
+<br>
+
 ## Change directory to the actual repo
 ``` bash
 cd atd-avd-evpn-vxlan
 ```
+<br>
+<br>
 
-## Building and Deploying Configurations
+## Building/Deploying Configurations & Labs
+
+<br>
+
+This AVD topology includes two labs, with tasks that show Day 2 operations using AVD on an EVPN VXLAN fabric.  These labs are located in the **lab buide** directory, in the file `evpn-vxlan-labs.md`.  You can view these labs in the easily readable MarkDown format within the IDE by right clicking the lab file, and clicking **Open Preview**.
+
+Prior to working on these labs, you will need to deploy the initial data center fabric, after you have modified the **ansible_password** as shown above.  The deployment of fabric, both initially, and of any changes, are all performed via running the appropriate ansible playbook, against the correct site inventory file.  To ease this process, alias commands are available to use via the included Makefile, which run the correct ansible playbook against the correct inventory file, using an abbreviated **make <command>**.
+
+Below is a description of all the available make file commands, what their purpose is, as well as which ansible playbook and inventory file they control.  
+

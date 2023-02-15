@@ -119,7 +119,7 @@ cd atd-avd-evpn-vxlan
 <br>
 <br>
 
-## Building/Deploying Configurations & Labs
+## Building/Deploying Configurations & Labs Info
 
 <br>
 
@@ -247,3 +247,21 @@ deploy_dc1_eapi: ## Deploy DC2 Spine/Leaf AVD generated configs via eAPI
 **Inventory File:**  `dc2/inventory.yml`
 
 **Description:** This command invokes the eos_config module to deploy the created configurations only on applicable devices in datacenter2, bypassing CVP and using the device eAPIs.  This playbook show an alternative way to use automation and AVD, without CVP for managing configurations.
+
+<br>
+<br>
+
+### Initial Configuration Build & Deployment
+
+Follow the below steps of which make commands to run to build the initial fabric using AVD.
+
+1) Deploy dc1 DCI configs:  `make deploy_dc1_dci`
+2) Deploy dc2 DCI configs:  `make deploy_dc2_dci`
+3) Build dc1 configs:  `make build_dc1`
+4) Build dc2 configs:  `make build_dc2`
+5) Deploy dc1 configs via CVP:  `make deploy_dc1_cvp`
+    1) login to cvp and watch the tasks and change control screens to see the tasks auto-created and executed.
+6) Deploy dc2 configs via CVP:  `make deploy_dc2_cvp`
+    1) login to cvp and watch the tasks and change control screens to see the tasks auto-created and executed.
+7) Login to switch CLIs and verify configs and operation.
+8) Continue on with labs in the `lab guide` directory.

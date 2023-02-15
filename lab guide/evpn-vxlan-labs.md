@@ -43,13 +43,13 @@ EVPN:  True
 
 After modifying and saving the vars files, complete the following steps:
 
-1) Issue the `make build-dc1` and `make build-dc2` to generate the new structured and device configurations.
+1) Issue the `make build_dc1` and `make build_dc2` to generate the new structured and device configurations.
 
 2) Review the configurations in their respective directories and verify the changes are correct.
 
 3) Review the changes to the documentation that is auto-created.
 
-4) Issue the `make deploy-dc1` and `make deploy-dc2`, review the created change controls in CVP, and approve.
+4) Issue the `make deploy_dc1_cvp` and `make deploy_dc2_cvp`, review the created change controls in CVP, and approve.
 
 5) Login to leaf switches 1 and 2 and verify the new configurations are present.
 

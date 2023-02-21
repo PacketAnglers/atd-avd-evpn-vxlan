@@ -13,13 +13,17 @@ Since this topology is for two datacenters, the vars and inventory directories a
 ```bash
 |---global_vars
     |---global_dc_vars.yml
+|---lab guide
+    |---evpn-vxlan-labs.md
 |---playbooks
     |---build_dc1.yml
     |---build_dc2.yml
-    |---cfg_dc1_dci.yml
-    |---cfg_dc2_dci.yml
-    |---deploy_dc1.yml
-    |---deploy_dc2.yml
+    |---deploy_dc1_cvp.yml
+    |---deploy_dc1_dci_eapi.yml
+    |---deploy_dc1_eapi.yml
+    |---deploy_dc2_cvp.yml
+    |---deploy_dc2_dci_eapi.yml
+    |---deploy_dc2_eapi.yml
 |---sites
     |---dc1 [Inventory and VARs for DC1 only]
     |   |---dci_configs [Non AVD Configs for Topology]

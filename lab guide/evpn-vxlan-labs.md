@@ -16,28 +16,28 @@ Modify the ***fabric_services*** vars files to add the following VLANs:
 ```yaml
 
 VLAN ID: 30
-Name: thirty
-Description: thirty
-Tags: ATD
-MTU: 9014
-vIP: 10.30.30.1/24
-EVPN:  True
+    Name: thirty
+    Description: thirty
+    Tags: ATD
+    MTU: 9014
+    vIP: 10.30.30.1/24
+    EVPN:  True
 
 VLAN ID: 40
-Name: forty
-Description: forty
-Tags: ATD
-MTU: 9014
-vIP: 10.40.40.1/24
-EVPN:  True
+    Name: forty
+    Description: forty
+    Tags: ATD
+    MTU: 9014
+    vIP: 10.40.40.1/24
+    EVPN:  True
 
 VLAN ID: 50
-Name: fifty
-Description: fifty
-Tags: ATD
-MTU: 9014
-vIP: 10.50.50.1/24
-EVPN:  True
+    Name: fifty
+    Description: fifty
+    Tags: ATD
+    MTU: 9014
+    vIP: 10.50.50.1/24
+    EVPN:  True
 
 ```
 

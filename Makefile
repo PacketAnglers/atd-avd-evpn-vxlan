@@ -27,7 +27,7 @@ deploy_dc1_cvp: ## Deploy DC1 AVD Configs Through CVP
 	ansible-playbook playbooks/deploy_dc1_cvp.yml -i sites/dc1/inventory.yml
 
 .PHONY: deploy_dc2_cvp
-deploy_dc2: ## Deploy DC2 AVD Configs Through CVP
+deploy_dc2_cvp: ## Deploy DC2 AVD Configs Through CVP
 	ansible-playbook playbooks/deploy_dc2_cvp.yml -i sites/dc2/inventory.yml
 
 .PHONY: deploy_dc1_eapi
@@ -36,4 +36,4 @@ deploy_dc1_eapi: ## Deploy DC1 Spine/Leaf AVD generated configs via eAPI
 
 .PHONY: deploy_dc2_eapi
 deploy_dc2_eapi: ## Deploy DC1 Spine/Leaf AVD generated configs via eAPI
-	ansible-playbook playbooks/deploy_dc2_eapi.yml -i sites/dc1/inventory.yml
+	ansible-playbook playbooks/deploy_dc2_eapi.yml -i sites/dc2/inventory.yml

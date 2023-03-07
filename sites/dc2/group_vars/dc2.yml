@@ -1,5 +1,6 @@
 ---
 # DC2 variables
+fabric_name: dc2_fabric
 
 # Credentials for CVP and EOS Switches
 ansible_user: arista

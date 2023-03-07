@@ -1,6 +1,5 @@
 ---
 # DC2 fabric vars
-fabric_name: dc2_fabric
 
 underlay_routing_protocol: EBGP
 overlay_routing_protocol: EBGP

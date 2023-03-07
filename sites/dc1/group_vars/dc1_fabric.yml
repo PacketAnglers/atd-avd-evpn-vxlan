@@ -11,16 +11,16 @@ evpn_import_pruning: true
 bgp_peer_groups:
   ipv4_underlay_peers:
     name: IPV4-UNDERLAY-PEERS
-    password: "HwsUtvRBaFIOmUOBhrtIfQ=="
+    password: X/OrLne2MxtUwJOXyoEcEw==
   mlag_ipv4_underlay_peer:
     name: MLAG-IPV4-UNDERLAY-PEER
-    password: "HwsUtvRBaFIOmUOBhrtIfQ=="
+    password: 96Yo/G3L+2RCoAD4Cy/2Ew==
   evpn_overlay_peers:
     name: EVPN-OVERLAY-LOCAL-PEERS
-    password: "HwsUtvRBaFIOmUOBhrtIfQ=="
+    password: HwsUtvRBaFIOmUOBhrtIfQ==
   evpn_overlay_core:
     name: EVPN-OVERLAY-REMOTE-PEERS
-    password: "HwsUtvRBaFIOmUOBhrtIfQ=="
+    password: N5U6i+3vPyc1DrMdKl+ljQ==
 
 ##################################################
 # DC1 Spines                                     #

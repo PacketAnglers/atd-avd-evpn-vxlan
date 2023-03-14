@@ -77,7 +77,7 @@ pip install deepmerge
 cd labfiles
 ```
 
-- Install the AVD devel collection
+- Install the AVD collection
 
 ``` bash
 ansible-galaxy collection install arista.avd --force

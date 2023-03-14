@@ -80,7 +80,7 @@ cd labfiles
 - Install the AVD devel collection
 
 ``` bash
-ansible-galaxy collection install git+https://github.com/aristanetworks/ansible-avd.git#/ansible_collections/arista/avd/,devel
+ansible-galaxy collection install arista.avd --force
 ```
 
 - Clone the POC Repo
@@ -97,7 +97,7 @@ The ATD Lab switches are preconfigured with MD5 encrypted passwords.  AVD uses s
 
 From the Programmibility IDE Explorer:
 
-- Navigate to the `labfiles/atd-avd-evpn-vxlan/sites/dc1` directory.
+- Navigate to the `labfiles/atd-avd-evpn-vxlan/sites/dc1/group_vars` directory.
 - Double click on the **dc1.yml** file to open an editor tab.
 - Update line 6.  **Follow** instructions per line below.
 
@@ -111,7 +111,7 @@ From the Programmibility IDE Explorer:
 # Update password with lab credentials
 ansible_password: ######### 
 ```
-- Repeat the above steps for the **dc2.yml** file, in the `sites/dc2` directory.
+- Repeat the above steps for the **dc2.yml** file, in the `sites/dc2/group_vars` directory.
 
 <br>
 <br>

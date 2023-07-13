@@ -91,27 +91,19 @@ git clone https://github.com/PacketAnglers/atd-avd-evpn-vxlan.git
 
 - At this point you should see the `atd-avd-evpn-vxlan` directory under the labfiles directory.
 
-## STEP #3 - Update Passwords and SSH Keys
+### STEP #3 - Setup Lab Password Environment Variable
 
-The ATD Lab switches are preconfigured with MD5 encrypted passwords.  AVD uses sha512 passwords so we need to convert the current MD5 password to sha512.  **You will need to login to any switch in the topology to complete this step.**  
+Each lab comes with a unique password. We set an environment variable called `LABPASSPHRASE` with the following command. The variable is later used to generate local user passwords and connect to our switches to push configs.
 
-From the Programmibility IDE Explorer:
-
-- Navigate to the `labfiles/atd-avd-evpn-vxlan/sites/dc1/group_vars` directory.
-- Double click on the **dc1.yml** file to open an editor tab.
-- Update line 6.  **Follow** instructions per line below.
-
-### Update Line 6
-
-- Update `ansible_password` key (line 4) with your unique lab password found on the **Usernames and Passwords** section of your lab topology screen.
-
-``` yaml
-# sites/dc1/group_vars/dc1.yml
-#
-# Update password with lab credentials
-ansible_password: ######### 
+``` bash
+export LABPASSPHRASE=`cat /home/coder/.config/code-server/config.yaml| grep "password:" | awk '{print $2}'`
 ```
-- Repeat the above steps for the **dc2.yml** file, in the `sites/dc2/group_vars` directory.
+
+You can view the password is set. This is the same password displayed when you click the link to access your lab.
+
+``` bash
+echo $LABPASSPHRASE
+```
 
 <br>
 <br>

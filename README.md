@@ -105,15 +105,10 @@ You can view the password is set. This is the same password displayed when you c
 echo $LABPASSPHRASE
 ```
 
-<br>
-<br>
-
-## Change directory to the actual repo
+### STEP #4 - Change directory to the actual repo
 ``` bash
 cd atd-avd-evpn-vxlan
 ```
-<br>
-<br>
 
 ## Building/Deploying Configurations & Labs Info
 

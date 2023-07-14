@@ -1,5 +1,7 @@
 # Deploy L3LS with EVPN VXLAN using AVD and CVP
-This PoC will allow you to use Arista's AVD automation framework to deploy a dual datacenter, layer 3 leaf spine fabric with EVPN VXLAN.  Additionally, it incorporates CVP into the CI/CD pipeline for configuration change management and auditing.  The PoC has some devices with static configurations that need to be deployed with the via ansible playbooks utilizing the **eos_config** role, and some that you will be modifying and implementing yourself using AVD.
+This PoC will allow you to use Arista's AVD automation framework to deploy a dual datacenter, layer 3 leaf spine fabric with EVPN VXLAN.  Additionally, it incorporates CVP into the CI/CD pipeline for configuration change management and auditing.  The PoC has some devices with static configurations that need to be deployed with the via ansible playbooks utilizing the **eos_config** role, and some that you will be modifying and implementing yourself using AVD.  
+
+***Note:*** This PoC is built to work with AVD 3.8.  Work is currently in progress to update everything to support AVD 4.0.
 
 ## Datacenter Fabric Topology
 Below is a network diagram of the datacenter topology you will be working with.  In this topology, all `s1` devices correspond with `sites/dc1`, and all `s2` devices correspond with `sites/dc2`.
@@ -77,10 +79,10 @@ pip install deepmerge
 cd labfiles
 ```
 
-- Install the AVD collection
+- Install the AVD 3.8 collection
 
 ``` bash
-ansible-galaxy collection install arista.avd --force
+ansible-galaxy collection install arista.avd:==3.8.0
 ```
 
 - Clone the POC Repo
